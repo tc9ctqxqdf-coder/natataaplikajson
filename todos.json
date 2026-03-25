@@ -1,0 +1,22 @@
+{
+    "id": 1,
+    "title": "Handleliste",
+    "tasks": [
+        {
+            "text": "Kjøpe melk",
+            "done": false
+        },
+        {
+            "text": "Kjøpe brød",
+            "done": true
+        },
+        {
+            "text": "Kjøpe ost",
+            "done": false
+        },
+        {
+            "text": "Kjøpe Sjokolade",
+            "done": false
+        }
+    ]
+}

@@ -34,3 +34,8 @@ def get_todos(): #funksjone med et navn "get_todos"
 def get_todos(id: int):# funksjon som heter "get_todos" sier den at når "id" må være et tall (int)
     #print(todos["tasks"][0]) # et eksempel her er bestemt at den pronter noe fra todos som er tasks rad 0.
     return todos["tasks"][id] # retunerer lista (todos av oppgvae(tasks)) fra "id" du valkte
+
+@app.post("/todos") #denne koden brukes når vi legger til noe nytt kalles den.
+def and_todo(task: dict): # en funksjon som inneholder dataen som kommer inn
+     todos["tasks"].append(task) #lager liste med oppgave og legger til det jeg la til
+     return todos #sender det tilbake til todos som er igjen filen.

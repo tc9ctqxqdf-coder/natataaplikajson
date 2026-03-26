@@ -1,0 +1,68 @@
+body{
+   
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+.Flyt{
+    border: 2px solid #94b4ff;
+    display: flex;
+    align-items: center;
+    width: 85%;
+    height: 60px;
+    gap: 10px;
+}
+
+input{
+    font-size: 15px;
+    border: 2px solid #94b4ff2e;
+    width: 60%;
+    height: 20px;
+    padding: 10px;
+
+}
+button{
+    background-color: #94b4ff;
+    border: 2px solid #fdfeff ;
+    color: #fdfeff;
+    border-radius: 5px;
+    width: 130px;
+    height: 50px;
+    font-size: 13px;
+}
+
+button:hover{
+    background-color: #6a82b9;
+}
+
+#Verdi{
+    background-color: #dee7ff;
+    border: 2px solid #b5d5ff ;
+    width: 80%;
+    height: 100px;
+    padding: 10px;
+}
+
+
+
+.tip{
+    background-color: #cee2ff;
+    border: 1px solid #6c98d2 ;
+    width: 80%;
+    height: 40px;
+    padding-left: 10px;
+    display: flex;
+    
+}
+
+.tip2{
+    background-color: #b5d5ff;
+    border: 1px solid #6c98d2 ;
+    width: 80%;
+    height: 40px;
+    padding-left: 10px;
+    display: flex;
+    
+}

@@ -4,13 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Frontend</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Theo sitt API</h1>
+    <h1>Notat App</h1>
 
-    <button onClick="javascript:getData();">Spør API-server om data</button>
+    <div class="Flyt">
+        <button onClick="javascript:getData();">Spør API-server</button>
+        <input type="text" id="input" value="/todos">
+    </div>
+    
 
     <p id="Verdi">Liste</p>
+
+    <p>TIPS: her er Komandoene du kan skrive:
+
+    <div class="TIPboc">
+        <div class="tip"><p><strong>/</strong> = viser meldingen "Hello, API!"</p></div>
+        <div class="tip2"><p><strong>/todos</strong>  = viser alle notatene</p></div>
+        <div class="tip"><p><strong>/todos/id</strong> = viser ett bestemt notat (id må være et tall fra 0–3)</p></div>
+    </div>
+
+    
+
 
     <script src="js/main.js"></script>
 

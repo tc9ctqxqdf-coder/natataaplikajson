@@ -15,7 +15,23 @@
             "done": false
         },
         {
-            "text": "Kjøpe Sjokolas",
+            "text": "Kjøpe Sjokolade",
+            "done": false
+        },
+        {
+            "text": "Kjøpe pizzadeig",
+            "done": false
+        },
+        {
+            "text": "Kjøpe pizzadeig",
+            "done": false
+        },
+        {
+            "text": "Kjøpe mer mat",
+            "done": false
+        },
+        {
+            "text": "Kjøpe mer youghurt",
             "done": false
         }
     ]

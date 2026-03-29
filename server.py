@@ -3,6 +3,8 @@
 from fastapi import FastAPI 
 from fastapi.middleware.cors import CORSMiddleware
 import json #henter (json) som brukes til å lese data fra filer
+from pydantic import BaseModel
+
 app = FastAPI()
 
 # Til Theo: Ignorer kodesnutten under. Den er utenfor pensum. 
@@ -35,7 +37,30 @@ def get_todos(id: int):# funksjon som heter "get_todos" sier den at når "id" m�
     #print(todos["tasks"][0]) # et eksempel her er bestemt at den pronter noe fra todos som er tasks rad 0.
     return todos["tasks"][id] # retunerer lista (todos av oppgvae(tasks)) fra "id" du valkte
 
-@app.post("/todos") #denne koden brukes når vi legger til noe nytt kalles den.
-def and_todo(task: dict): # en funksjon som inneholder dataen som kommer inn
-     todos["tasks"].append(task) #lager liste med oppgave og legger til det jeg la til
-     return todos #sender det tilbake til todos som er igjen filen.
+class Item(BaseModel):
+    todo: str
+
+
+@app.post("/newtodo/")
+async def create_item(item: Item):
+    # Les eksisterende data
+    with open("todos.json", "r") as file:
+        data = json.load(file)
+
+    # Lag ny task
+    new_task = {
+        "text": item.todo,
+        "done": False
+    }
+
+    # Legg til i tasks-lista
+    data["tasks"].append(new_task)
+
+    # Skriv tilbake til fila
+    with open("todos.json", "w", encoding="utf-8") as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
+
+    return {"message": "Task lagt til!", "task": new_task}
+
+
+

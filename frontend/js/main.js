@@ -19,27 +19,32 @@ async function getData() { //vennter på data. lager dereter funksjon som heter 
   
   }
 }
+}
 
-//leger til todo
-async function addTodo() {  
-  const url = "http://127.0.0.1:8000/todos"; //vi må inn på siden URL (API til nettsiden ) og inn i dataen
-  const tekst = document.getElementById("nyTodo").value; // variabel som heter (Tekxt) det som kjer her er at vi finner id html "nyTodo" og henter det brukeren skrev.
-  const nyOppgave = { "tekst": text, "done": false}; //legger til en oppgave eller variablen tekst og sier denne er ikke ferdig så (false)
-  try{
-    const response = await fetch(url, { //sender data til URL altså til surveren
-      method: "POST",//Sender den til Post funksjonen til pyton
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(nyOppgave)// gjør om til tekst
-    });
-    if (!response.ok) { //hvis det ikke er ok så..
-      throw new Error(`Response status: ${response.status}`); ////sier at det ble feil.
+function sendpostrequest() {
+  /* Dra teksten ut fra tekstfeltet med getElementById("newtodo") */
+  let newtodo = document.getElementById("newtodo").value;
+  console.log(newtodo);
+
+  fetch("http://localhost:8000/newtodo/", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    todo: newtodo,
+  })
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("Noe gikk galt med requesten");
     }
-    const result = await response.json(); // får svar fra surver som igjen går til surver fil
-    document.getElementById("Verdi").textContent = JSON.stringify(result); //  legger det i vise i liten
-    document.getElementById("nTodo").value = ""; //finner html id "nyTodo" og tømer den
-  } catch (error) { //når det var feil tar den opp eror
-    console.error(eror.message);//sender eror meldingen i consloe
-    } 
-  }
-  
+    return response.json();
+  })
+  .then(data => {
+    console.log("Svar fra server:", data);
+  })
+  .catch(error => {
+    console.error("Feil:", error);
+  });
 }

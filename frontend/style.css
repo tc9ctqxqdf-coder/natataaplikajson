@@ -1,5 +1,4 @@
 body{
-   
     padding: 20px;
     display: flex;
     justify-content: center;
@@ -17,7 +16,7 @@ body{
 
 input{
     font-size: 15px;
-    border: 2px solid #94b4ff2e;
+    border: 2px solid #8fb0ff2e;
     width: 60%;
     height: 20px;
     padding: 10px;

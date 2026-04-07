@@ -17,13 +17,13 @@ app.add_middleware(
 # Ignorer kodesnutten over. Den er utenfor pensum. 
 
 todos = {}#todos er tom liste akurat nå
-todos2 = {}#dette er en tom liste for den andre todos tabelen
+notes = {}#dette er en tom liste for den andre todos tabelen
 
 with open('todos.json', 'r', encoding='utf-8') as file: # vi åpner filen (todos.json) leser av den("r") ((Støtter norsk bokstav)) gir filen et navn som er "file"
         todos = json.load(file)#så første vi ser er at todos er variablen og vi har puttet noe i den. lenger opp er todos en tom liste nå putter vi noe i den. Så gjør vi filen om til payton data slik at payton kan lese va den.(filen er det navnet vi ga (todos.json))
 
-with open('todos2.json', 'r', encoding='utf-8') as file:
-        todos2 = json.load(file)
+with open('notes.json', 'r', encoding='utf-8') as file:
+        notes = json.load(file)
 
 @app.get("/")#Når noen besøker dene netsiden av URL og skriver samtidig / gjøres denne funksjonen.
 def home():#funksjone som heter "home".
@@ -34,10 +34,10 @@ def home():#funksjone som heter "home".
 def get_todos(): #funksjone med et navn "get_todos"
     return todos #retunerer(tilbake) todos (todos er listen lenger opp og den har fått en file som heter "file")
 
-#Returnerer alle todos fra todos2 file
-@app.get("/todos2")##så er det ny URL vis noen besøker netsiden og dereter skrier "/todos" så kjøres denne funksjonen
+#Returnerer alle todos fra notes file
+@app.get("/notes")##så er det ny URL vis noen besøker netsiden og dereter skrier "/todos" så kjøres denne funksjonen
 def get_todos(): #funksjone med et navn "get_todos"
-    return todos2 #retunerer(tilbake) todos (todos er listen lenger opp og den har fått en file som heter "file")
+    return notes #retunerer(tilbake) todos (todos er listen lenger opp og den har fått en file som heter "file")
 
 #Returnerer 1 todo basert på /id
 @app.get("/todos/{id}") # når noen skriver URL pluss "/todos/" også et tall bak som er "id" så vil den kjøre dette
@@ -45,11 +45,11 @@ def get_todos(id: int):# funksjon som heter "get_todos" sier den at når "id" m�
     #print(todos["tasks"][0]) # et eksempel her er bestemt at den pronter noe fra todos som er tasks rad 0.
     return todos["tasks"][id] # retunerer lista (todos av oppgvae(tasks)) fra "id" du valkte
 
-#Returnerer 1 todo basert på /id fra todos2 file
-@app.get("/todos2/{id}") # når noen skriver URL pluss "/todos/" også et tall bak som er "id" så vil den kjøre dette
+#Returnerer 1 todo basert på /id fra notes file
+@app.get("/notes/{id}") # når noen skriver URL pluss "/todos/" også et tall bak som er "id" så vil den kjøre dette
 def get_todos(id: int):# funksjon som heter "get_todos" sier den at når "id" må være et tall (int)
     #print(todos["tasks"][0]) # et eksempel her er bestemt at den pronter noe fra todos som er tasks rad 0.
-    return todos2["tasks"][id] # retunerer lista (todos av oppgvae(tasks)) fra "id" du valkte
+    return notes["notes"][id] # retunerer lista (todos av oppgvae(tasks)) fra "id" du valkte
 
 class Item(BaseModel):
     todo: str

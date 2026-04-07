@@ -22,8 +22,8 @@ async function getData() { //vennter på data. lager dereter funksjon som heter 
 }
 
 function sendpostrequest() {
-  /* Dra teksten ut fra tekstfeltet med getElementById("newtodo") */
-  let newtodo = document.getElementById("newtodo").value;
+
+  let newtodo = document.getElementById("newtodo").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
   console.log(newtodo);
 
   fetch("http://localhost:8000/newtodo/", {
@@ -36,15 +36,13 @@ function sendpostrequest() {
   })
 })
   .then(response => {
-    if (!response.ok) {
-      throw new Error("Noe gikk galt med requesten");
+    if (!response.ok) {//hvis det ikke er riktig
+      throw new Error("Noe gikk galt med requesten"); //så sier den at noe gikk galt
     }
-    return response.json();
-  })
-  .then(data => {
-    console.log("Svar fra server:", data);
-  })
-  .catch(error => {
-    console.error("Feil:", error);
+    return response.json(); // så retunerer den (response) i filen.
+  }).then(data => {//joakim er en slags variabel men det er ikke det det henter fra response.json og det
+    console.log("Svar fra server:", data); //her svarer surveren og henter fra hva data svarer i console.log
+  }).catch(error => {//når det ble error
+    console.error("Feil:", error);//vise feilen i consol.log og si hva feilen er.
   });
 }

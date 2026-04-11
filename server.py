@@ -48,32 +48,43 @@ def get_todos(id: int):# funksjon som heter "get_todos" sier den at når "id" m�
 #Returnerer 1 todo basert på /id fra notes file
 @app.get("/notes/{id}") # når noen skriver URL pluss "/todos/" også et tall bak som er "id" så vil den kjøre dette
 def get_todos(id: int):# funksjon som heter "get_todos" sier den at når "id" må være et tall (int)
-    #print(todos["tasks"][0]) # et eksempel her er bestemt at den pronter noe fra todos som er tasks rad 0.
     return notes["notes"][id] # retunerer lista (todos av oppgvae(tasks)) fra "id" du valkte
 
 class Item(BaseModel):
     todo: str
 
-
-@app.post("/newtodo/") # i denne URL så når noen skriver så kjer dette.
+#dette er prosesen når oppgaver blir lakt til i databasen i todos.json
+@app.post("/newtodo") # i denne URL så når noen skriver så kjer dette.
 async def create_item(item: Item): # lager en funksjon som tar imot data fra brukeren
     with open("todos.json", "r") as file: #åpner filen "todos.json" og leser den
-        data = json.load(file) # oversetter filen til javascipt (json)
+        data = json.load(file) # oversetter filen til ikk  (json)
 
-    # Lag ny task
-    new_task = {
-        "text": item.todo,
-        "done": False
+    new_task = { #legger til ny oppgave
+        "text": item.todo, # henter teksten fra brukeren (item: Item)
+        "done": False #sett oppgaven til (False)
     }
 
-    # Legg til i tasks-lista
-    data["tasks"].append(new_task)
+    data["tasks"].append(new_task) #går inn i listen og legger den til en ny task og 
 
-    # Skriv tilbake til fila
-    with open("todos.json", "w", encoding="utf-8") as file:
+    with open("todos.json", "w", encoding="utf-8") as file: # åpner  filen (todos.json) og leser den oversetter. og 
+        json.dump(data, file, indent=4, ensure_ascii=False) 
+
+    return {"message": "Task lagt til!", "task": new_task} # retunerer tasken inn i new_task som brukeren la til 
+
+
+@app.post("/newnote") # i denne URL så når noen skriver så kjer dette.
+async def create_item(item: Item): # lager en funksjon som tar imot data fra brukeren
+    with open("notes.json", "r") as file: #åpner filen "todos.json" og leser den
+        data = json.load(file) # oversetter filen til ikk  (json)
+
+    new_note = { #legger til ny oppgave
+        "title": item.todo, # henter teksten fra brukeren (item: Item)
+        "content": "Dette er en test" #sett oppgaven til (False)
+    }
+
+    data["notes"].append(new_note) #går inn i listen og legger den til en ny task og 
+
+    with open("notes.json", "w", encoding="utf-8") as file: # åpner  filen (todos.json) og leser den oversetter. og 
         json.dump(data, file, indent=4, ensure_ascii=False)
 
-    return {"message": "Task lagt til!", "task": new_task}
-
-
-
+    return {"message": "Task lagt til!", "task": new_note} # retunerer tasken inn i new_task som brukeren la til 

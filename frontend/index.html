@@ -20,15 +20,23 @@
 
     <div class="TIPboc">
         <div class="tip"><p><strong>/</strong> = viser meldingen "Hello, API!"</p></div>
-        <div class="tip2"><p><strong>/todos</strong>  = viser alle notatene</p></div>
-        <div class="tip"><p><strong>/todos/id</strong> = viser ett bestemt notat (id må være et tall fra 0–3)</p></div>
+        <div class="tip2"><p><strong>/todos, /newtos</strong>  = viser alle notatene</p></div>
+        <div class="tip"><p><strong>/todos/id, /newtos/id</strong> = viser ett bestemt notat (id må være et tall fra 0–3)</p></div>
     </div>
-
+    <br>
+    <p>Legg til i todos</p>
     <div class="Flyt">
-        <button OnClick="javascript:sendpostrequest();">Legg til +</button>
+        <button OnClick="javascript:sendpostrequesttodos();">Legg til +</button>
         <input id="newtodo" type="text">
     </div>
+
+    <p>Legg til i notes</p>
+    <div class="Flyt">
+        <button OnClick="javascript:sendpostrequestnotes();">Legg til +</button>
+        <input id="newnote" type="text">
+    </div>
     
+
     <script src="js/main.js"></script>
 
 </body>

@@ -2,12 +2,25 @@
     "id": 2,
     "title": "Skolearbeid",
     "notes": [
-        {"title": "Gjøre norsk","content": ""},
-
-        {"title": "gjøre matte","content": ""},
-
-        {"title": "Kjøpe bok","content": ""},
-
-        {"title": "gjøre engelsk","content": ""}
+        {
+            "title": "Gjøre norsk",
+            "content": "gjør ferdign oppgave"
+        },
+        {
+            "title": "gjøre matte",
+            "content": "gjør ferdign oppgave"
+        },
+        {
+            "title": "Kjøpe bok",
+            "content": "gjør ferdign oppgave"
+        },
+        {
+            "title": "gjøre engelsk",
+            "content": "gjør ferdign oppgave"
+        },
+        {
+            "title": "NewnoteJoakim",
+            "content": "Dette er en test"
+        }
     ]
 }

@@ -3,6 +3,7 @@ async function getData() { //vennter på data. lager dereter funksjon som heter 
   const path = document.getElementById("input").value; // variabel navn også finner den ID (input) og henter inputen
   const baseUrl = url + path; // også setter den sammen URL og det inputen er hentet
   let Verdi = "result"; // variabel som heter "verdi" og ineholder en tekst
+  
 
   try { //prøver å kjøre ofte løres vis feil oppstår
     const response = await fetch(baseUrl); //respons(prøver å hente) vent til den har hentet data fra (url)
@@ -11,7 +12,8 @@ async function getData() { //vennter på data. lager dereter funksjon som heter 
     }
 
     const result = await response.json();//variabel som ikke kan endres. veneter. gjør svar om til JSON-data
-    document.getElementById("Verdi").textContent = JSON.stringify(result); //sender videre til en nettside og prøver å vinne (ID i Html) som heter "Verdi". og gjør dataen() om til tekst på nettsiden
+    var str = JSON.stringify(obj, null, 2); // spacing level = 2
+    document.getElementById("Verdi").textContent = JSON.stringify(result); //sender videre til en nettside og prøver å finne ID i (Html) som heter "Verdi". og gjør dataen() om til tekst på nettsiden
     //console.log(result);
 
   } catch (error) { {//hvis try går galt så kommer vi hit og tar opp feilen
@@ -21,26 +23,50 @@ async function getData() { //vennter på data. lager dereter funksjon som heter 
 }
 }
 
-function sendpostrequest() {
+function sendpostrequesttodos() {
 
   let newtodo = document.getElementById("newtodo").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
-  console.log(newtodo);
+  console.log(newtodo); //skriver ut verdien i consle.log
 
-  fetch("http://localhost:8000/newtodo/", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
+  fetch("http://localhost:8000/newtodo/", { //sende melding til API
+  method: "POST", //sender daya til API
+  headers: { 
+    "Content-Type": "application/json"//sender til (Json-data)
   },
   body: JSON.stringify({
     todo: newtodo,
   })
-})
-  .then(response => {
+}).then(response => {
     if (!response.ok) {//hvis det ikke er riktig
       throw new Error("Noe gikk galt med requesten"); //så sier den at noe gikk galt
     }
     return response.json(); // så retunerer den (response) i filen.
-  }).then(data => {//joakim er en slags variabel men det er ikke det det henter fra response.json og det
+  }).then(data => {//data er en slags variabel men det er ikke det det henter fra response.json og det ser man ikke men det er litt komplisert
+    console.log("Svar fra server:", data); //her svarer surveren og henter fra hva data svarer i console.log
+  }).catch(error => {//når det ble error
+    console.error("Feil:", error);//vise feilen i consol.log og si hva feilen er.
+  });
+}
+
+function sendpostrequestnotes() {
+
+  let newnote = document.getElementById("newnote").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
+  console.log(newtodo); //skriver ut verdien i consle.log
+
+  fetch("http://localhost:8000/newnote", { //sende melding til API
+  method: "POST", //sender daya til API
+  headers: {
+    "Content-Type": "application/json"//sender til (Json-data)
+  },
+  body: JSON.stringify({
+    todo: newnote
+  })
+}).then(response => {
+    if (!response.ok) {//hvis det ikke er riktig
+      throw new Error("Noe gikk galt med requesten"); //så sier den at noe gikk galt
+    }
+    return response.json(); // så retunerer den (response) i filen.
+  }).then(data => {//data er en slags variabel men det er ikke det det henter fra response.json og det ser man ikke men det er litt komplisert
     console.log("Svar fra server:", data); //her svarer surveren og henter fra hva data svarer i console.log
   }).catch(error => {//når det ble error
     console.error("Feil:", error);//vise feilen i consol.log og si hva feilen er.

@@ -19,8 +19,7 @@ async function getData() { //vennter på data. lager dereter funksjon som heter 
   } catch (error) { {//hvis try går galt så kommer vi hit og tar opp feilen
     console.error(error.message); //også skriver vi i (console.error) det feilen meldingen sier til oss.
   
-  }
-}
+  }}
 }
 
 function sendpostrequesttodos() {
@@ -61,6 +60,31 @@ function sendpostrequestnotes() {
   body: JSON.stringify({
     todo: newnote
   })
+}).then(response => {
+    if (!response.ok) {//hvis det ikke er riktig
+      throw new Error("Noe gikk galt med requesten"); //så sier den at noe gikk galt
+    }
+    return response.json(); // så retunerer den (response) i filen.
+  }).then(data => {//data er en slags variabel men det er ikke det det henter fra response.json og det ser man ikke men det er litt komplisert
+    console.log("Svar fra server:", data); //her svarer surveren og henter fra hva data svarer i console.log
+  }).catch(error => {//når det ble error
+    console.error("Feil:", error);//vise feilen i consol.log og si hva feilen er.
+  });
+}
+
+
+
+function senddeleterequestnotes() {
+
+  let slett = document.getElementById("delete").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
+  console.log(slett); //skriver ut verdien i consle.log
+
+  fetch("http://localhost:8000/delete/" + slett, { //sende melding til API
+  method: "DELETE", //sender daya til API
+  headers: {
+    "false": "application/json"
+  }
+  
 }).then(response => {
     if (!response.ok) {//hvis det ikke er riktig
       throw new Error("Noe gikk galt med requesten"); //så sier den at noe gikk galt

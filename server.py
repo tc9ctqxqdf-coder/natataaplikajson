@@ -66,7 +66,7 @@ async def create_item(item: Item): # lager en funksjon som tar imot data fra bru
 
     data["tasks"].append(new_task) #går inn i listen og legger den til en ny task og 
 
-    with open("todos.json", "w", encoding="utf-8") as file: # åpner  filen (todos.json) og leser den oversetter. og 
+    with open("todos.json", "w", encoding="utf-8") as file: # åpner  filen (todos.json) og leser den oversetter.  
         json.dump(data, file, indent=4, ensure_ascii=False) 
 
     return {"message": "Task lagt til!", "task": new_task} # retunerer tasken inn i new_task som brukeren la til 
@@ -82,9 +82,23 @@ async def create_item(item: Item): # lager en funksjon som tar imot data fra bru
         "content": "Dette er en test" #sett oppgaven til (False)
     }
 
-    data["notes"].append(new_note) #går inn i listen og legger den til en ny task og 
+    data["notes"].append(new_note) #går inn i listen og legger den til en ny task  
 
     with open("notes.json", "w", encoding="utf-8") as file: # åpner  filen (todos.json) og leser den oversetter. og 
         json.dump(data, file, indent=4, ensure_ascii=False)
 
     return {"message": "Task lagt til!", "task": new_note} # retunerer tasken inn i new_task som brukeren la til 
+
+
+
+
+@app.delete("/delete/{id}") # en URL som venter til delite kommer inn
+async def slett_element ( id: int ): # funksjon som tar inn heltall
+     with open("todos.json", "r") as file: # åpner to (todos.json) filen 
+        todos = json.load(file) #leser filen
+        del todos["tasks"][id] #(del betyr å seltte) sletter elemtentet i task basert på id plassering
+
+     with open("todos.json", "w", encoding="utf-8") as file: # åpner filen for skrivering "w" 
+          json.dump(todos, file, indent=2) # oppdaterer daaen(todos) i filen 
+          
+    

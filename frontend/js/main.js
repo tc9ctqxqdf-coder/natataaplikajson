@@ -1,5 +1,5 @@
 async function getData() { //vennter på data. lager dereter funksjon som heter "getData"
-  const url = "http://127.0.0.1:8000";  // her forteller vi hva URL er altså IP adressen til nettstedet
+  const url = "http://http://192.168.20.71:8000/:8000";  // her forteller vi hva URL er altså IP adressen til nettstedet
   const path = document.getElementById("input").value; // variabel navn også finner den ID (input) og henter inputen
   const baseUrl = url + path; // også setter den sammen URL og det inputen er hentet
   let Verdi = "result"; // variabel som heter "verdi" og ineholder en tekst
@@ -27,7 +27,7 @@ function sendpostrequesttodos() {
   let newtodo = document.getElementById("newtodo").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
   console.log(newtodo); //skriver ut verdien i consle.log
 
-  fetch("http://localhost:8000/newtodo/", { //sende melding til API
+  fetch("http://http://192.168.20.71:8000/:8000/newtodo/", { //sende melding til API
   method: "POST", //sender daya til API
   headers: { 
     "Content-Type": "application/json"//sender til (Json-data)
@@ -52,7 +52,7 @@ function sendpostrequestnotes() {
   let newnote = document.getElementById("newnote").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
   console.log(newtodo); //skriver ut verdien i consle.log
 
-  fetch("http://localhost:8000/newnote", { //sende melding til API
+  fetch("http://192.168.20.71:8000/newnote", { //sende melding til API
   method: "POST", //sender daya til API
   headers: {
     "Content-Type": "application/json"//sender til (Json-data)
@@ -79,7 +79,7 @@ function senddeleterequestnotes() {
   let slett = document.getElementById("delete").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
   console.log(slett); //skriver ut verdien i consle.log
 
-  fetch("http://localhost:8000/delete/" + slett, { //sende melding til API
+  fetch("http://192.168.20.71:8000/delete/" + slett, { //sende melding til API
   method: "DELETE", //sender daya til API
   headers: {
     "false": "application/json"

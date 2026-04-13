@@ -1,38 +1,42 @@
 {
-  "id": 1,
-  "title": "Handleliste",
-  "tasks": [
-    {
-      "text": "Shopp melk",
-      "done": false
-    },
-    {
-      "text": "Shopp ost",
-      "done": false
-    },
-    {
-      "text": "Shopp Sjokolade",
-      "done": false
-    },
-    {
-      "text": "Shopp pizzadeig",
-      "done": false
-    },
-    {
-      "text": "Shopp pizzadeig",
-      "done": false
-    },
-    {
-      "text": "Shopp mer mat",
-      "done": false
-    },
-    {
-      "text": "Shopp mer youghurt",
-      "done": false
-    },
-    {
-      "text": "testjoakim",
-      "done": false
-    }
-  ]
+    "id": 1,
+    "title": "Handleliste",
+    "tasks": [
+        {
+            "text": "Shopp melk",
+            "done": false
+        },
+        {
+            "text": "Shopp ost",
+            "done": false
+        },
+        {
+            "text": "Shopp Sjokolade",
+            "done": false
+        },
+        {
+            "text": "Shopp pizzadeig",
+            "done": false
+        },
+        {
+            "text": "Shopp pizzadeig",
+            "done": false
+        },
+        {
+            "text": "Shopp mer mat",
+            "done": false
+        },
+        {
+            "text": "Shopp mer youghurt",
+            "done": false
+        },
+        {
+            "text": "testjoakim",
+            "done": false
+        },
+        {
+            "text": "",
+            "done": false
+        }
+    ]
 }

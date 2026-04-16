@@ -12,7 +12,7 @@ async function getData() { //vennter på data. lager dereter funksjon som heter 
     }
 
     const result = await response.json();//variabel som ikke kan endres. veneter. gjør svar om til JSON-data
-    var str = JSON.stringify(obj, null, 2); // spacing level = 2
+    var str = JSON.stringify(result, null, 2);
     document.getElementById("Verdi").textContent = JSON.stringify(result); //sender videre til en nettside og prøver å finne ID i (Html) som heter "Verdi". og gjør dataen() om til tekst på nettsiden
     //console.log(result);
 
@@ -27,7 +27,7 @@ function sendpostrequesttodos() {
   let newtodo = document.getElementById("newtodo").value;//henter verddien (newtodo) som liger i html og lagrer den i en variabel
   console.log(newtodo); //skriver ut verdien i consle.log
 
-  fetch("http://192.168.20.71:8000/newtodo/", { //sende melding til API
+  fetch("http://192.168.20.71:8000/newtodo", { //sende melding til API
   method: "POST", //sender daya til API
   headers: { 
     "Content-Type": "application/json"//sender til (Json-data)

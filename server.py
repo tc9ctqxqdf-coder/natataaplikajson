@@ -57,7 +57,7 @@ class Item(BaseModel):
 @app.post("/newtodo") # i denne URL så når noen skriver så kjer dette.
 async def create_item(item: Item): # lager en funksjon som tar imot data fra brukeren
     with open("todos.json", "r") as file: #åpner filen "todos.json" og leser den
-        data = json.load(file) # oversetter filen til ikk  (json)
+        data = json.load(file) # oversetter filen til ikk(json)
 
     new_task = { #legger til ny oppgave
         "text": item.todo, # henter teksten fra brukeren (item: Item)
@@ -75,7 +75,7 @@ async def create_item(item: Item): # lager en funksjon som tar imot data fra bru
 @app.post("/newnote") # i denne URL så når noen skriver så kjer dette.
 async def create_item(item: Item): # lager en funksjon som tar imot data fra brukeren
     with open("notes.json", "r") as file: #åpner filen "todos.json" og leser den
-        data = json.load(file) # oversetter filen til ikk  (json)
+        data = json.load(file) # oversetter filen til ikk (json)
 
     new_note = { #legger til ny oppgave
         "title": item.todo, # henter teksten fra brukeren (item: Item)
